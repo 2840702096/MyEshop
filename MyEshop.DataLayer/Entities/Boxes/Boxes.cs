@@ -18,6 +18,7 @@ namespace MyEshop.DataLayer.Entities.Boxes
 
         [Key]
         public int Id { get; set; }
+        public int Idd { get; set; }
         public int ProductId { get; set; }
         public int CategoryId { get; set; }
         public int WebsiteCategoryId { get; set; }
