@@ -1,0 +1,131 @@
+﻿@inject IProductServices ProductServices;
+
+@{
+    var Colors = ViewBag.Colors;
+}
+
+
+<div class="page-body">
+
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            لیست رنگ ها
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="/Admin/Home"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">محصولات</li>
+                        <li class="breadcrumb-item active">
+                            لیست رنگ ها
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row product-adding">
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>افزودن رنگ</h5>
+                    </div>
+                    <div style="max-height:360px;min-height:360px" class="card-body">
+                        <div class="digital-add needs-validation">
+                            <form asp-action="CreateColor" method="post"
+                                  enctype="multipart/form-data">
+                                <div style="margin-top:45px" class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>عنوان رنگ</label>
+                                    <input value="@ViewBag.ColorTitle" name="colorTitle" class="form-control" type="text">
+                                    @if (ViewBag.TitleError != null)
+                                    {
+                                        <p class="text-danger">لطفا عنوان رنگ را وارد کنید</p>
+                                    }
+                                </div>
+                                <div style="margin-top:45px" class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>رنگ</label>
+                                    <input value="@ViewBag.ColorItSelf" style="width:80px; height:45px" id="InputColor" name="colorItSelf" class="" type="color">
+                                </div>
+                                <div style="margin-top:30px" class="form-group mb-0">
+                                    <div class="product-buttons text-center">
+                                        <button type="submit" class="btn btn-primary">ذخیره</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>
+                            رنگ ها
+                        </h5>
+                    </div>
+                    
+                    @if (ViewBag.UnAbleToDelete != null)
+                    {
+                        <div style="text-align:right; margin-left:10px; margin-right:10px; margin-top:5px" class="alert alert-danger">
+                            به دلیل مورد استفاده قرار گرفتن این رنگ در قسمت رنگ های محصول، عملیات حذف امکان پذیر نیست
+                        </div>
+                        <a style="width:50px; margin-right:10px; margin-bottom:10px" href="/Admin/ColorList" class="btn btn-outline btn-danger btn-sm">لغو</a>
+                    }
+                    <div style="overflow-y:auto; max-height:360px; min-height:360px;" class="card-body">
+                        <table class="table table-striped table-bordered table-hover dataTable no-footer mt-3"
+                               id="dataTables-example" aria-describedby="dataTables-example_info">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="width: 300px;">رنگ</th>
+                                    <th class="text-center" style="width: 300px;">عنوان رنگ</th>
+                                    <th class="text-center">دستورات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Colors)
+                                {
+                                    <tr>
+                                        <td style="vertical-align: middle;" class="text-center">
+                                            <div style="height:35px; width:35px;border-radius:12px;display:inline-block; border:1px black solid;background-color:@item.ColorItSelf">
+                                            </div>
+                                        </td>
+                                        <td style="vertical-align: middle;" class="text-center">
+                                            <label>@item.ColorTitle</label>
+                                        </td>
+                                        <td style="vertical-align: middle;" class="text-center">
+                                            <a style="font-size:25px" href="/Admin/DeleteColor/@item.ColorId">
+                                                <i style="color:red" class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+
+</div>
+
+@section Scripts{
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+    <script>
+
+        CKEDITOR.replace('Body', {
+            customConfig: '/AdminContent/js/Config.js'
+        });
+
+    </script>
+}

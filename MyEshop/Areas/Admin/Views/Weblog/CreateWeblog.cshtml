@@ -1,0 +1,129 @@
+﻿@model MyEshop.Core.DTOs.AddWeblogViewModel
+
+@{
+    ViewData["Title"] = "افزودن وبلاگ";
+}
+
+<div class="page-body">
+
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            افزودن وبلاگ
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="/Admin/Home"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">وبلاگ ها</li>
+                        <li class="breadcrumb-item active">
+                            افزودن وبلاگ
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row product-adding">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>اطلاعات وبلاگ ها</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="digital-add needs-validation">
+                            <form asp-action="CreateWeblog" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>عنوان وبلاگ</label>
+                                    <input asp-for="Title" class="form-control" type="text">
+                                    <span class="text-danger" asp-validation-for="Title"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>امتیاز وبلاگ</label>
+                                    <input asp-for="Score" class="form-control" type="text">
+                                    <span class="text-danger" asp-validation-for="Score"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0">
+                                        <span>*</span>گروه وبلاگ
+                                    </label>
+                                    <select asp-for="CategoryId" id="Group"
+                                            class="form-control" asp-items="@ViewBag.Categories">
+                                    </select>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label pt-0"><span>*</span>متن وبلاگ</label>
+                                    <div style="width:40px"></div>
+                                    <textarea style="height:200px" asp-for="WeblogBody" class="form-control"></textarea>
+                                    <span class="text-danger" asp-validation-for="WeblogBody"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>تصویر</label>
+                                    <button type="button"
+                                            style="display:block;width:120px; height:30px;border: 1px solid;border-radius: 3px;"
+                                            onclick="document.getElementById('getFile').click()">
+                                        بارگذاری تصویر
+                                    </button>
+                                    <input type="file" class="image" id="getFile" style="display:none"
+                                           asp-for="ImageName">
+                                    <span class="text-danger" asp-validation-for="ImageName"></span>
+                                </div>
+                                <div>
+                                    <img id="Product" class="imgPreview" src="/Admin/images/GalleryImage.jpg"
+                                         style="width:150px;height:150px;margin-bottom:10px" />
+                                </div>
+                                <div class="form-group mb-0">
+                                    <div class="product-buttons text-center">
+                                        <a href="/Admin/WeblogList" class="btn btn-light">بازگشت</a>
+                                        <button type="submit" class="btn btn-primary">ذخیره</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+
+</div>
+
+@section Scripts{
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#Product').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#getFile").change(function() {
+            readURL(this);
+        });
+    </script>
+
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+    <script src="/Admin/js/jquery.min.js"></script>
+    <script>
+
+        CKEDITOR.replace('WeblogBody', {
+            customConfig: '/Admin/js/Config.js'
+        });
+
+    </script>
+}

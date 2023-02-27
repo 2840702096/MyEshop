@@ -1,0 +1,135 @@
+﻿@model MyEshop.Core.DTOs.EditBannerViewModel
+
+@{
+    ViewData["Title"] = "ویرایش بنر";
+}
+
+<div class="page-body">
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            ویرایش بنر
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="/Admin/Home"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">بنر ها</li>
+                        <li class="breadcrumb-item active">
+                            ویرایش بنر
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row product-adding">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>ویرایش بنر</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="digital-add needs-validation">
+                            <form asp-action="EditHomePageBanners" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <input type="hidden" name="currentImage" value="@Model.CurrentImage" />
+                                    <label class="col-form-label pt-0"><span>*</span>عنوان بنر</label>
+                                    <input asp-for="Title" class="form-control" type="text">
+                                    <span class="text-danger" asp-validation-for="Title"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>آدرس بنر</label>
+                                    <input asp-for="Link" class="form-control" type="text">
+                                    <span class="text-danger" asp-validation-for="Link"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>کلمات کلیدی</label>
+                                    <input placeholder="با علامت , جدا کنید" asp-for="Tags" class="form-control" type="text">
+                                    <span class="text-danger" asp-validation-for="Tags"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0">
+                                        <span>*</span>شماره ی
+                                        بنر
+                                    </label>
+                                    <select asp-for="BannerNumber"
+                                            class="form-control">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                    </select>
+                                    @if(ViewBag.BannerNumberError != null)
+                                    {
+                                        <p class="text-danger">در این شماره، بنری وجود دارد.</p>
+                                    }
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>تصویر</label>
+                                    <button type="button"
+                                            style="display:block;width:120px; height:30px;border: 1px solid;border-radius: 3px;"
+                                            onclick="document.getElementById('getFile').click()">
+                                        بارگذاری تصویر
+                                    </button>
+                                    <input type="file" class="image" id="getFile" style="display:none"
+                                           asp-for="ImageName">
+                                    <span class="text-danger" asp-validation-for="ImageName"></span>
+                                </div>
+                                <div>
+                                    <img id="Product" class="imgPreview" src="/Admin/images/HomePageBannerImages/@Model.CurrentImage"
+                                         style="max-width:150px;max-height:150px;margin-bottom:10px" />
+                                </div>
+                                <div class="form-group mb-0">
+                                    <div class="product-buttons text-center">
+                                        <button type="submit" class="btn btn-primary">ذخیره</button>
+                                        <a href="/Admin/HomePageBanners" class="btn btn-light">بازگشت</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+
+</div>
+
+@section Scripts
+    {
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#Product').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#getFile").change(function() {
+            readURL(this);
+        });
+    </script>
+}

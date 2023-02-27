@@ -1,0 +1,88 @@
+﻿@model Products
+@inject IClientServices ClientServices
+
+<div class="item">
+    <div class="product-card">
+        <div class="product-head">
+            <div class="rating-stars">
+                @if (Model.Discount != 0)
+                {
+                    <div class="discount">
+                        <span>@Model.Discount%</span>
+                    </div>
+                }
+                @switch (@Model.Score)
+                {
+                    case 1:
+                        {
+                            <i class="mdi mdi-star active"></i>
+                            <i class="mdi mdi-star "></i>
+                            <i class="mdi mdi-star "></i>
+                            <i class="mdi mdi-star "></i>
+                            <i class="mdi mdi-star "></i>
+                            break;
+                        }
+                    case 2:
+                        {
+                            <i class="mdi mdi-star active"></i>
+                            <i class="mdi mdi-star active"></i>
+                            <i class="mdi mdi-star "></i>
+                            <i class="mdi mdi-star "></i>
+                            <i class="mdi mdi-star "></i>
+                            break;
+                        }
+                    case 3:
+                        {
+                            <i class="mdi mdi-star active"></i>
+                            <i class="mdi mdi-star active"></i>
+                            <i class="mdi mdi-star active"></i>
+                            <i class="mdi mdi-star "></i>
+                            <i class="mdi mdi-star "></i>
+                            break;
+                        }
+                    case 4:
+                        {
+                            <i class="mdi mdi-star active"></i>
+                            <i class="mdi mdi-star active"></i>
+                            <i class="mdi mdi-star active"></i>
+                            <i class="mdi mdi-star active"></i>
+                            <i class="mdi mdi-star "></i>
+                            break;
+                        }
+                    case 5:
+                        {
+                            <i class="mdi mdi-star active"></i>
+                            <i class="mdi mdi-star active"></i>
+                            <i class="mdi mdi-star active"></i>
+                            <i class="mdi mdi-star active"></i>
+                            <i class="mdi mdi-star active"></i>
+                            break;
+                        }
+                }
+            </div>
+        </div>
+        <a style="min-height: 160px; max-height: 160px;" class="product-thumb" href="/SingleProduct/@Model.ProductId">
+            <img src="/Admin/images/ProductThumbnails/@Model.ImageName" alt="Product Thumbnail">
+        </a>
+        <div style="width: 165px;" class="product-card-body">
+            <h5 class="product-title">
+                <a style="display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;"
+                   href="/SingleProduct/@Model.ProductId">@Model.EnglishTitle<br>@Model.Title</a>
+            </h5>
+            <a class="product-meta" href="">@ClientServices.GetSubCategory(Model.ProductCategoryParentId)</a>
+            @if (Model.Discount != 0)
+            {
+                <div style="text-decoration:line-through" class="product-meta d-flex ai-center jc-between pl-5">
+                    @Model.Price.ToString("#,0")</div>
+                <span class="product-price">@Model.DiscountedPrice.ToString("#,0") تومان</span>
+            }
+            else
+            {
+                <div class="d-flex ai-center jc-between pl-5">
+                    <div class="color-300 line-through as-end mr-auto text-body-2"></div>
+                </div>
+                <span class="product-price">@Model.Price.ToString("#,0") تومان</span>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Orders>
+
+@{
+}
+
+<div class="page-body">
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            لیست سفارشات
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></a></li>
+                        <li class="breadcrumb-item">سفارشات</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h5>
+                    اطلاعات سفارشات
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                        <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center" style="vertical-align: middle;">شماره سفارش</th>
+                                                    <th class="text-center" style="vertical-align: middle;">نام کاربری</th>
+                                                    <th class="text-center" style="vertical-align: middle;">قیمت کل</th>
+                                                    <th class="text-center" style="vertical-align: middle;">وضعیت</th>
+                                                    <th class="text-center" style="vertical-align: middle;">مشخصات محصول</th>
+                                                    <th class="text-center" style="vertical-align: middle;">دستورات</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                @foreach (var Order in Model)
+                                                {
+                                                    <tr>
+                                                        <td class="text-center" style="vertical-align: middle;">@Order.OrderId</td>
+                                                        <td class="text-center" class="text-center" style="vertical-align: middle;"></td>
+                                                        <td class="text-center" style="vertical-align: middle;">@Order.CartSum.ToString("#,0")</td>
+                                                        <td class="text-center" style="vertical-align: middle;">
+                                                            @if (Order.IsFinaly)
+                                                            {
+                                                                <p class="text-success text-center">پرداخت شده</p>
+                                                            }
+                                                            else
+                                                            {
+                                                                <p class="text-danger text-center">پرداخت نشده</p>
+                                                            }
+                                                        </td>
+                                                        <td class="text-center" style="vertical-align: middle;">
+                                                            <a href="/Admin/OrderDetails/@Order.OrderId">
+                                                                <i style="color:black; font-size:40px" class="fa fa-folder-open">
+                                                                </i>
+                                                            </a>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <a href="/Admin/HasRead/@Order.OrderId" class="btn btn-success btn-sm">
+                                                                سفارش دیده شد
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination d-inline-block">
+                                            @for (int i = 1; i <= ViewBag.PageCount; i++)
+                                            {
+                                                <li class="page-item @((ViewBag.PageId==i)?"active":"")"><a class="page-link" href="/Admin/OrderList?pageId=@i">@i</a></li>
+                                            }
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>

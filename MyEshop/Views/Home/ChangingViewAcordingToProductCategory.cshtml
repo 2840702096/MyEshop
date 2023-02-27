@@ -1,0 +1,713 @@
+@inject IClientServices ClientServices;
+
+@{
+    ViewData["Title"] = "خانه";
+    List<Sliders> MainSliders = ViewBag.Sliders;
+    List<Banners> Banners = ViewBag.Banners;
+    List<Products> Products = ViewBag.Products;
+    List<Products> LatestProducts = ViewBag.LatestProducts;
+    List<Boxes> FirstBox = ViewBag.FirstBox;
+    List<Boxes> SecondBox = ViewBag.SecondBox;
+    List<Products> FirstImazingBox = ViewBag.FirstImazingBox;
+    List<ProductBrands> brands = ClientServices.GetBrands();
+    List<ProductCategories> SubCategory = ViewBag.SubCategory;
+
+    int Id = ViewBag.Id;
+    ProductCategories Category = ClientServices.GetLastSubCategory(Id);
+    IEnumerable<Products> CorrespondingProducts = ClientServices.GetProductForCorrespondingSubCategory(Category.CategoryId);
+    var WebsiteCategory = ClientServices.GetLastWebsiteCategory();
+    IEnumerable<Products> ProductsOfThisWebsiteCategory = ClientServices.GetProductForCorrespondingCategoryInThisProductCategoryPage(WebsiteCategory.CategoryId, Id);
+}
+
+<main class="main-content dt-sl mb-3">
+    <div class="container main-container">
+        <!-- Start Main-Slider -->
+        <div class="row mb-5">
+            <aside class="sidebar col-lg-4 hidden-md order-2 pr-0 hidden-md">
+                <!-- Start banner -->
+                <div class="sidebar-inner dt-sl">
+                    <div class="sidebar-banner">
+                        <div class="row">
+                            <div class="col-12 mb-1">
+                                @if (Banners.Where(b => b.BannerNumber == 1).Any())
+                                {
+                                    <div class="widget-banner">
+                                        <a href="@Banners.SingleOrDefault(b=>b.BannerNumber == 1).Link">
+                                            <img src="/Admin/images/ProductCategoryBannerImages/@Banners.SingleOrDefault(b=>b.BannerNumber == 1).ImageName" alt="@Banners.SingleOrDefault(b=>b.BannerNumber == 1).Title">
+                                        </a>
+                                    </div>
+                                }
+
+                            </div>
+                            <div class="col-12">
+                                @if (Banners.Where(b => b.BannerNumber == 2).Any())
+                                {
+                                    <div class="widget-banner">
+                                        <a href="@Banners.SingleOrDefault(b=>b.BannerNumber == 2).Link">
+                                            <img src="/Admin/images/ProductCategoryBannerImages/@Banners.SingleOrDefault(b=>b.BannerNumber == 2).ImageName" alt="@Banners.SingleOrDefault(b=>b.BannerNumber == 2).Title">
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End banner -->
+            </aside>
+            <div class="col-lg-8 col-md-12 order-1">
+                <!-- Start main-slider -->
+                <section id="main-slider"
+                         class="main-slider main-slider-cs mt-1 carousel slide carousel-fade card hidden-sm"
+                         data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        @if (MainSliders.Any())
+                        {
+
+                            Boolean IsActive = true;
+                            int DataSlideTo = 0;
+
+                            @foreach (var Item in MainSliders)
+                            {
+                                <li data-target="#main-slider" data-slide-to="@DataSlideTo" class="@((IsActive)?"active":"")"></li>
+                                IsActive = false;
+                            }
+                        }
+                    </ol>
+                    <div class="carousel-inner">
+                        @if (MainSliders.Any())
+                        {
+                            Boolean IsSliderActive = true;
+                            @foreach (var Item in MainSliders)
+                            {
+                                <div class="carousel-item @((IsSliderActive)?"active":"")">
+                                    <a class="main-slider-slide" href="@Item.Link">
+                                        <img src="/Admin/images/ProductCategorySliderImages/@Item.ImageName" alt="@Item.Title" class="img-fluid">
+                                    </a>
+                                </div>
+                                IsSliderActive = false;
+                            }
+                        }
+                    </div>
+                    <a class="carousel-control-prev" href="#main-slider" role="button" data-slide="prev">
+                        <i class="mdi mdi-chevron-right"></i>
+                    </a>
+                    <a class="carousel-control-next" href="#main-slider" data-slide="next">
+                        <i class="mdi mdi-chevron-left"></i>
+                    </a>
+                </section>
+                <section id="main-slider-res"
+                         class="main-slider carousel slide carousel-fade card d-none show-sm" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#main-slider-res" data-slide-to="0" class="active"></li>
+                        <li data-target="#main-slider-res" data-slide-to="1"></li>
+                        <li data-target="#main-slider-res" data-slide-to="2"></li>
+                        <li data-target="#main-slider-res" data-slide-to="3"></li>
+                        <li data-target="#main-slider-res" data-slide-to="4"></li>
+                        <li data-target="#main-slider-res" data-slide-to="5"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a class="main-slider-slide" href="#">
+                                <img src="/img/main-slider/slider-responsive/1.jpg" alt=""
+                                     class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a class="main-slider-slide" href="#">
+                                <img src="/img/main-slider/slider-responsive/2.jpg" alt=""
+                                     class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a class="main-slider-slide" href="#">
+                                <img src="/img/main-slider/slider-responsive/3.jpg" alt=""
+                                     class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a class="main-slider-slide" href="#">
+                                <img src="/img/main-slider/slider-responsive/4.jpg" alt=""
+                                     class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a class="main-slider-slide" href="#">
+                                <img src="/img/main-slider/slider-responsive/5.jpg" alt=""
+                                     class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a class="main-slider-slide" href="#">
+                                <img src="/img/main-slider/slider-responsive/6.jpg" alt=""
+                                     class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#main-slider-res" role="button" data-slide="prev">
+                        <i class="mdi mdi-chevron-right"></i>
+                    </a>
+                    <a class="carousel-control-next" href="#main-slider-res" data-slide="next">
+                        <i class="mdi mdi-chevron-left"></i>
+                    </a>
+                </section>
+                <!-- End main-slider -->
+            </div>
+        </div>
+        <!-- End Main-Slider -->
+    </div>
+    <!-- Start Product-Slider -->
+    @if (FirstImazingBox.Count() > 0)
+    {
+        <section class="slider-section mb-5 amazing-section" style="background: @ClientServices.GetMainProductCategory(Id).Color">
+            <div class="container main-container">
+                <div class="row mb-3">
+                    <!-- Start Product-Slider -->
+                    <div class="col-12">
+                        <div class="product-carousel carousel-lg owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="amazing-product text-center pt-5">
+                                    <h3 style="margin-top:15; color:white">
+                                        شگفت انگیز
+                                    </h3>
+                                    <a href="#">
+                                        <img style="margin-top:10%; margin-bottom:20%" src="/Admin/images/ProductCategoryImages/@ClientServices.GetMainProductCategory(Id).ImageName" alt="">
+                                    </a>
+                                    <a href="#" class="view-all-amazing-btn">
+                                        مشاهده همه
+                                    </a>
+                                </div>
+                            </div>
+                            @foreach (var Item in FirstImazingBox)
+                            {
+                                <partial name="_ProductBox" model="@ClientServices.GetProducts(Item.ProductId)"></partial>
+                            }
+                        </div>
+                    </div>
+                    <!-- End Product-Slider -->
+                </div>
+            </div>
+        </section>
+    }
+    <!-- End Product-Slider -->
+    <div class="container main-container">
+        <!-- Start Product-Slider -->
+        @if (CorrespondingProducts.Count() > 0)
+        {
+            <section class="slider-section dt-sl mb-5">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="section-title text-sm-title title-wide no-after-title-wide">
+                            <h2>@Category.CategoryTitle</h2>
+                            <a href="">مشاهده همه</a>
+                        </div>
+                    </div>
+                    <!-- Start Product-Slider -->
+                    <div class="col-12">
+                        <div class="product-carousel carousel-lg owl-carousel owl-theme">
+                            @foreach (var Item in CorrespondingProducts)
+                            {
+                                <partial name="_ProductBox" model="Item"></partial>
+                            }
+                        </div>
+                    </div>
+                    <!-- End Product-Slider -->
+                </div>
+            </section>
+        }
+        <!-- End Product-Slider -->
+        <!-- Start Banner -->
+        <div class="row mt-3 mb-5">
+            <div class="col-sm-6 col-12 mb-2">
+                @if (Banners.Where(b => b.BannerNumber == 3).Any())
+                {
+                    <div class="widget-banner">
+                        <a href="@Banners.SingleOrDefault(b=>b.BannerNumber == 3).Link">
+                            <img src="/Admin/images/ProductCategoryBannerImages/@Banners.SingleOrDefault(b=>b.BannerNumber == 3).ImageName" alt="@Banners.SingleOrDefault(b=>b.BannerNumber == 3).Title">
+                        </a>
+                    </div>
+                }
+            </div>
+            <div class="col-sm-6 col-12 mb-2">
+                @if (Banners.Where(b => b.BannerNumber == 4).Any())
+                {
+                    <div class="widget-banner">
+                        <a href="@Banners.SingleOrDefault(b=>b.BannerNumber == 4).Link">
+                            <img src="/Admin/images/ProductCategoryBannerImages/@Banners.SingleOrDefault(b=>b.BannerNumber == 4).ImageName" alt="@Banners.SingleOrDefault(b=>b.BannerNumber == 4).Title">
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- End Banner -->
+    </div>
+    <!-- Start Product-Slider -->
+    @if (FirstBox.Count() > 0)
+    {
+        <section class="slider-section dt-sl mb-5">
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="section-title text-sm-title title-wide no-after-title-wide">
+                        <h2>@ClientServices.GetBoxTitle(1)</h2>
+                        <a href="#">مشاهده همه</a>
+                    </div>
+                </div>
+                <!-- Start Product-Slider -->
+                <div class="col-12">
+                    <div class="product-carousel carousel-lg owl-carousel owl-theme">
+                        @foreach (var Item in FirstBox)
+                        {
+                            <partial name="_ProductBox" model="@ClientServices.GetProducts(Item.ProductId)"></partial>
+                        }
+                    </div>
+                </div>
+                <!-- End Product-Slider -->
+            </div>
+        </section>
+    }
+    <!-- End Product-Slider -->
+    <div class="container main-container">
+        <!-- Start Banner -->
+        <div class="row mt-3 mb-5">
+            <div class="col-md-3 col-sm-6 col-6 mb-2">
+                @if (Banners.Where(b => b.BannerNumber == 5).Any())
+                {
+                    <div class="widget-banner">
+                        <a href="@Banners.SingleOrDefault(b=>b.BannerNumber == 5).Link">
+                            <img src="/Admin/images/ProductCategoryBannerImages/@Banners.SingleOrDefault(b=>b.BannerNumber == 5).ImageName" alt="@Banners.SingleOrDefault(b=>b.BannerNumber == 5).Title">
+                        </a>
+                    </div>
+                }
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 mb-2">
+                @if (Banners.Where(b => b.BannerNumber == 6).Any())
+                {
+                    <div class="widget-banner">
+                        <a href="@Banners.SingleOrDefault(b=>b.BannerNumber == 6).Link">
+                            <img src="/Admin/images/ProductCategoryBannerImages/@Banners.SingleOrDefault(b=>b.BannerNumber == 6).ImageName" alt="@Banners.SingleOrDefault(b=>b.BannerNumber == 6).Title">
+                        </a>
+                    </div>
+                }
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 mb-2">
+                @if (Banners.Where(b => b.BannerNumber == 7).Any())
+                {
+                    <div class="widget-banner">
+                        <a href="@Banners.SingleOrDefault(b=>b.BannerNumber == 7).Link">
+                            <img src="/Admin/images/ProductCategoryBannerImages/@Banners.SingleOrDefault(b=>b.BannerNumber == 7).ImageName" alt="@Banners.SingleOrDefault(b=>b.BannerNumber == 7).Title">
+                        </a>
+                    </div>
+                }
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 mb-2">
+                @if (Banners.Where(b => b.BannerNumber == 8).Any())
+                {
+                    <div class="widget-banner">
+                        <a href="@Banners.SingleOrDefault(b=>b.BannerNumber == 8).Link">
+                            <img src="/Admin/images/ProductCategoryBannerImages/@Banners.SingleOrDefault(b=>b.BannerNumber == 8).ImageName" alt="@Banners.SingleOrDefault(b=>b.BannerNumber == 8).Title">
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- End Banner -->
+        <!-- Start Category-Section -->
+        <div class="row mt-3 mb-5">
+            <div class="col-12">
+                <div class="category-section dt-sn dt-sl border">
+                    <div class="category-section-slider dt-sl">
+                        <div class="category-slider owl-carousel">
+                            @foreach (var Item in ClientServices.GetSubCategoriesForThisMainCategory(Id))
+                            {
+                                <div class="item">
+                                    <a href="/Home/ChangingViewAcordingToCategory/@Category.CategoryId" class="promotion-category">
+                                        <img style="width:125px" src="/Admin/images/ProductCategoryImages/@Item.ImageName" alt="">
+                                        <h4 class="promotion-category-name">@Item.CategoryTitle</h4>
+                                        <h6 class="promotion-category-quantity">@ClientServices.GetCountOfProductInThisSubCategory(Item.CategoryId) کالا</h6>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Category-Section -->
+        @if (ProductsOfThisWebsiteCategory.Count() > 0)
+        {
+            <section class="slider-section mb-5 amazing-section" style="background: @WebsiteCategory.Color">
+                <div class="container main-container">
+                    <div class="row mb-3">
+                        <!-- Start Product-Slider -->
+                        <div class="col-12">
+                            <div class="product-carousel carousel-lg owl-carousel owl-theme">
+                                <div class="item">
+                                    <div class="amazing-product text-center pt-5">
+                                        <h3 style="margin-top:15%; color:white">
+                                            @WebsiteCategory.CategoryTitle
+                                        </h3>
+                                        <a href="#">
+                                            <img style="margin-top:10%; margin-bottom:20%" src="/Admin/images/WebsiteCategoryImages/@WebsiteCategory.ImageName" alt="">
+                                        </a>
+                                        <a href="#" class="view-all-amazing-btn">
+                                            مشاهده همه
+                                        </a>
+                                    </div>
+                                </div>
+                                @foreach (var Item in ProductsOfThisWebsiteCategory)
+                                {
+                                    <partial name="_ProductBox" model="@ClientServices.GetProducts(Item.ProductId)"></partial>
+                                }
+                            </div>
+                        </div>
+                        <!-- End Product-Slider -->
+                    </div>
+                </div>
+            </section>
+        }
+        <!-- Start Banner -->
+        <div class="row mt-3 mb-5">
+            <div class="col-12">
+                @if (Banners.Where(b => b.BannerNumber == 9).Any())
+                {
+                    <div class="widget-banner">
+                        <a href="@Banners.SingleOrDefault(b=>b.BannerNumber == 9).Link">
+                            <img src="/Admin/images/ProductCategoryBannerImages/@Banners.SingleOrDefault(b=>b.BannerNumber == 9).ImageName" alt="@Banners.SingleOrDefault(b=>b.BannerNumber == 9).Title">
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!-- End Banner -->
+    <!-- Start Product-Slider -->
+    @if (SecondBox.Count() > 0)
+    {
+        <section class="slider-section dt-sl mb-5">
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="section-title text-sm-title title-wide no-after-title-wide">
+                        <h2>@ClientServices.GetBoxTitle(2)</h2>
+                        <a href="#">مشاهده همه</a>
+                    </div>
+                </div>
+                <!-- Start Product-Slider -->
+                <div class="col-12">
+                    <div class="product-carousel carousel-lg owl-carousel owl-theme">
+                        @foreach (var Item in SecondBox)
+                        {
+                            <partial name="_ProductBox" model="@ClientServices.GetProducts(Item.ProductId)"></partial>
+                        }
+                    </div>
+                </div>
+                <!-- End Product-Slider -->
+            </div>
+        </section>
+    }
+    <!-- End Product-Slider -->
+    <!-- Start Feature-Product -->
+    @* <section class="dt-sl dt-sn mb-5">
+    <div class="row">
+    <div class="col-12">
+    <div class="section-title text-sm-title title-wide no-after-title-wide">
+    <h2>پیشنهاد ما</h2>
+    </div>
+    </div>
+    </div>
+    <div class="row mb-3">
+    <div class="col-lg-4 col-md-6 col-sm-12 col-12 pt-4">
+    <div class="row">
+    <div class="col-12">
+    <div class="card-horizontal-product border-bottom rounded-0">
+    <div class="card-horizontal-product-thumb">
+    <a href="#">
+    <img src="/img/products/017.jpg" alt="">
+    </a>
+    </div>
+    <div class="card-horizontal-product-content">
+    <div class="card-horizontal-product-title">
+    <a href="#">
+    <h3>کت مردانه مجلسی مدل k-m-5110</h3>
+    </a>
+    </div>
+    <div class="rating-stars">
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star"></i>
+    </div>
+    <div class="card-horizontal-product-price">
+    <span>199,000 تومان</span>
+    </div>
+    <div class="card-horizontal-product-buttons">
+    <a href="#" class="btn btn-outline-info">جزئیات محصول</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-12">
+    <div class="card-horizontal-product border-bottom rounded-0">
+    <div class="card-horizontal-product-thumb">
+    <a href="#">
+    <img src="/img/products/020.jpg" alt="">
+    </a>
+    </div>
+    <div class="card-horizontal-product-content">
+    <div class="card-horizontal-product-title">
+    <a href="#">
+    <h3>کت مردانه مجلسی مدل k-m-5110</h3>
+    </a>
+    </div>
+    <div class="rating-stars">
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star"></i>
+    </div>
+    <div class="card-horizontal-product-price">
+    <span>199,000 تومان</span>
+    </div>
+    <div class="card-horizontal-product-buttons">
+    <a href="#" class="btn btn-outline-info">جزئیات محصول</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-12">
+    <div class="card-horizontal-product border-bottom rounded-0">
+    <div class="card-horizontal-product-thumb">
+    <a href="#">
+    <img src="/img/products/014.jpg" alt="">
+    </a>
+    </div>
+    <div class="card-horizontal-product-content">
+    <div class="card-horizontal-product-title">
+    <a href="#">
+    <h3>کت مردانه مجلسی مدل k-m-5110</h3>
+    </a>
+    </div>
+    <div class="rating-stars">
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star"></i>
+    </div>
+    <div class="card-horizontal-product-price">
+    <span>199,000 تومان</span>
+    </div>
+    <div class="card-horizontal-product-buttons">
+    <a href="#" class="btn btn-outline-info">جزئیات محصول</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 col-12 pt-4">
+    <div class="row">
+    <div class="col-12">
+    <div class="card-horizontal-product border-bottom rounded-0">
+    <div class="card-horizontal-product-thumb">
+    <a href="#">
+    <img src="/img/products/016.jpg" alt="">
+    </a>
+    </div>
+    <div class="card-horizontal-product-content">
+    <div class="card-horizontal-product-title">
+    <a href="#">
+    <h3>کت مردانه مجلسی مدل k-m-5110</h3>
+    </a>
+    </div>
+    <div class="rating-stars">
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star"></i>
+    </div>
+    <div class="card-horizontal-product-price">
+    <span>199,000 تومان</span>
+    </div>
+    <div class="card-horizontal-product-buttons">
+    <a href="#" class="btn btn-outline-info">جزئیات محصول</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-12">
+    <div class="card-horizontal-product border-bottom rounded-0">
+    <div class="card-horizontal-product-thumb">
+    <a href="#">
+    <img src="/img/products/018.jpg" alt="">
+    </a>
+    </div>
+    <div class="card-horizontal-product-content">
+    <div class="card-horizontal-product-title">
+    <a href="#">
+    <h3>کت مردانه مجلسی مدل k-m-5110</h3>
+    </a>
+    </div>
+    <div class="rating-stars">
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star"></i>
+    </div>
+    <div class="card-horizontal-product-price">
+    <span>199,000 تومان</span>
+    </div>
+    <div class="card-horizontal-product-buttons">
+    <a href="#" class="btn btn-outline-info">جزئیات محصول</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-12">
+    <div class="card-horizontal-product border-bottom rounded-0">
+    <div class="card-horizontal-product-thumb">
+    <a href="#">
+    <img src="/img/products/015.jpg" alt="">
+    </a>
+    </div>
+    <div class="card-horizontal-product-content">
+    <div class="card-horizontal-product-title">
+    <a href="#">
+    <h3>کت مردانه مجلسی مدل k-m-5110</h3>
+    </a>
+    </div>
+    <div class="rating-stars">
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star"></i>
+    </div>
+    <div class="card-horizontal-product-price">
+    <span>199,000 تومان</span>
+    </div>
+    <div class="card-horizontal-product-buttons">
+    <a href="#" class="btn btn-outline-info">جزئیات محصول</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 col-12 pt-4">
+    <div class="row">
+    <div class="col-12">
+    <div class="card-horizontal-product border-bottom rounded-0">
+    <div class="card-horizontal-product-thumb">
+    <a href="#">
+    <img src="/img/products/017.jpg" alt="">
+    </a>
+    </div>
+    <div class="card-horizontal-product-content">
+    <div class="card-horizontal-product-title">
+    <a href="#">
+    <h3>کت مردانه مجلسی مدل k-m-5110</h3>
+    </a>
+    </div>
+    <div class="rating-stars">
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star"></i>
+    </div>
+    <div class="card-horizontal-product-price">
+    <span>199,000 تومان</span>
+    </div>
+    <div class="card-horizontal-product-buttons">
+    <a href="#" class="btn btn-outline-info">جزئیات محصول</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-12">
+    <div class="card-horizontal-product border-bottom rounded-0">
+    <div class="card-horizontal-product-thumb">
+    <a href="#">
+    <img src="/img/products/020.jpg" alt="">
+    </a>
+    </div>
+    <div class="card-horizontal-product-content">
+    <div class="card-horizontal-product-title">
+    <a href="#">
+    <h3>کت مردانه مجلسی مدل k-m-5110</h3>
+    </a>
+    </div>
+    <div class="rating-stars">
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star"></i>
+    </div>
+    <div class="card-horizontal-product-price">
+    <span>199,000 تومان</span>
+    </div>
+    <div class="card-horizontal-product-buttons">
+    <a href="#" class="btn btn-outline-info">جزئیات محصول</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-12">
+    <div class="card-horizontal-product border-bottom rounded-0">
+    <div class="card-horizontal-product-thumb">
+    <a href="#">
+    <img src="/img/products/014.jpg" alt="">
+    </a>
+    </div>
+    <div class="card-horizontal-product-content">
+    <div class="card-horizontal-product-title">
+    <a href="#">
+    <h3>کت مردانه مجلسی مدل k-m-5110</h3>
+    </a>
+    </div>
+    <div class="rating-stars">
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star active"></i>
+    <i class="mdi mdi-star"></i>
+    </div>
+    <div class="card-horizontal-product-price">
+    <span>199,000 تومان</span>
+    </div>
+    <div class="card-horizontal-product-buttons">
+    <a href="#" class="btn btn-outline-info">جزئیات محصول</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section> *@
+    <!-- End Feature-Product -->
+    <!-- Start Brand-Slider -->
+    <section class="slider-section dt-sl mb-5">
+        <div class="row">
+            <!-- Start Product-Slider -->
+            <div class="col-12">
+                <div class="brand-slider carousel-lg owl-carousel owl-theme">
+                    @foreach (var Item in brands)
+                    {
+                        <div class="item">
+                            <img src="/Admin/images/BrandImages/@Item.ImageName" class="img-fluid" alt="@Item.Title">
+                        </div>
+                    }
+                </div>
+            </div>
+            <!-- End Product-Slider -->
+
+        </div>
+    </section>
+    <!-- End Brand-Slider -->
+    </div>
+</main>

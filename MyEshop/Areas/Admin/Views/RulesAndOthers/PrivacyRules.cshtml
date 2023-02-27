@@ -1,0 +1,83 @@
+@model PrivacyRules
+
+@{
+    ViewData["Title"] = "حریم خصوصی";
+}
+
+<div class="container-fluid">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="page-header-left">
+                    <h3>حریم خصوصی</h3>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <ol class="breadcrumb pull-right">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">قوانین سایت</li>
+                    <li class="breadcrumb-item active">
+                        حریم خصوصی
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card col-md-12 mt-5">
+    <div class="card-body">
+        <div class="card-header" style="margin-top: -30px;">
+            <h5>
+                اطلاعات
+            </h5>
+        </div>
+        <div class="panel panel-danger">
+            <div class="mt-5">
+                <form asp-action="PrivacyRules" method="post" class="needs-validation user-add"
+                      enctype="multipart/form-data">
+                    <div class="form-group">
+                        @if (ViewBag.TitleError != null)
+                        {
+                            <label class="col-form-label pt-0"><span>*</span>عنوان</label>
+                            <input class="form-control" type="text" name="title">
+                            <p class="text-danger">لطفا عنوان را وارد کنید.</p>
+                        }
+                        else
+                        {
+                            <label class="col-form-label pt-0"><span>*</span>عنوان</label>
+                            <input class="form-control" type="text" name="title" value="@Model.Title">
+                        }
+                    </div>
+                    <div class="form-group mt-5">
+                        @if (ViewBag.TextError != null)
+                        {
+                            <label class="col-form-label pt-0"><span>*</span>متن</label>
+                            <textarea style="height: 400px;" class="form-control"
+                                  name="text" type="text"></textarea>
+                            <p class="text-danger">لطفا متن را وارد کنید.</p>
+                        }
+                        else
+                        {
+                            <label class="col-form-label pt-0"><span>*</span>متن</label>
+                            <textarea style="height: 400px;" class="form-control"
+                                  name="text" type="text">@Model.Text</textarea>
+                        }
+                    </div>
+                    <div class="pull-right mt-3">
+                        <button type="submit" class="btn btn-primary">ذخیره</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

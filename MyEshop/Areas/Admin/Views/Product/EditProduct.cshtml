@@ -1,0 +1,228 @@
+﻿@model EditProductViewModel
+
+@{
+    ViewData["Title"] = "ویرایش محصول";
+}
+
+<div class="page-body">
+
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            ویرایش محصول
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="/Admin/Home"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">محصولات</li>
+                        <li class="breadcrumb-item active">
+                            ویرایش محصول
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row product-adding">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>اطلاعات محصول</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="digital-add needs-validation">
+                            <form asp-action="EditProduct" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="currentImage" value="@Model.CurrentImage" />
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>عنوان محصول</label>
+                                    <input asp-for="Title" class="form-control" type="text">
+                                    <span class="text-danger" asp-validation-for="Title"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>عنوان انگلیسی محصول</label>
+                                    <input asp-for="EnglishTitle" class="form-control" type="text">
+                                    <span class="text-danger" asp-validation-for="EnglishTitle"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>کلمات کلیدی</label>
+                                    <input placeholder="با علامت , جدا کنید" asp-for="Tags" class="form-control" type="text">
+                                    <span class="text-danger" asp-validation-for="Tags"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>قیمت</label>
+                                    <input asp-for="Price" class="form-control" type="number">
+                                    <span class="text-danger" asp-validation-for="Price"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>امتیاز</label>
+                                    <input asp-for="Score" class="form-control" type="number">
+                                    <span class="text-danger" asp-validation-for="Score"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>(%)تخفیف</label>
+                                    <input asp-for="Discount" class="form-control" type="number">
+                                    <span class="text-danger" asp-validation-for="Discount"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0">
+                                        <span>*</span>برند محصول
+                                    </label>
+                                    <select asp-for="BrandId" id="Group"
+                                            class="form-control" asp-items="@ViewBag.Brands">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0">
+                                        <span>*</span>گروه محصول
+                                    </label>
+                                    <select asp-for="ProductCategoryId" id="Group"
+                                            class="form-control" asp-items="@ViewBag.ProductCategories">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0">
+                                        <span>*</span>دسته بندی سایت
+                                    </label>
+                                    <select asp-for="WebsiteCategoryId" id="Group"
+                                            class="form-control" asp-items="@ViewBag.WebsiteCategories">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>تصویر</label>
+                                    <button type="button"
+                                            style="display:block;width:120px; height:30px;border: 1px solid;border-radius: 3px;"
+                                            onclick="document.getElementById('getFile').click()">
+                                        بارگذاری تصویر
+                                    </button>
+                                    <input type="file" class="image" id="getFile" style="display:none"
+                                           asp-for="ImageName">
+                                    <span class="text-danger" asp-validation-for="ImageName"></span>
+                                </div>
+                                <div>
+                                    <img id="Product" class="imgPreview" src="/Admin/images/ProductImages/@Model.CurrentImage"
+                                         style="width:150px;height:150px;" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>نقد و بررسی محصول</label>
+                                    <textarea asp-for="Description" class="form-control"></textarea>
+                                    <span class="text-danger" asp-validation-for="Description"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>وضعیت محصول</label>
+                                    <div class="form-group">
+                                        <div class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated m-t-10">
+                                            <label class="d-block" for="edo-ani3">
+                                                <input class="radio_animated" id="edo-ani3" type="radio"
+                                                       asp-for="IsActive" value="@true">
+                                                فعال
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated m-t-10">
+                                            <label class="d-block" for="edo-ani3">
+                                                <input class="radio_animated" id="edo-ani3" type="radio"
+                                                       asp-for="IsActive" value="@false">
+                                                غیر فعال
+                                            </label>
+                                        </div>
+                                    </div>
+                                    @if(ViewBag.CanNotBeNounActive == true)
+                                    {
+                                        <p class="text-danger">برای غیرفعال کردن این محصول، ابتدا باید آن را از هر باکسی حذف کنید.</p>
+                                    }
+                                </div>
+                                <div style="margin-top:40px;margin-bottom:40px" class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>قابل مرجوع</label>
+                                    <div class="form-group">
+                                        <div class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated m-t-10">
+                                            <label class="d-block" for="edo-ani3">
+                                                <input class="radio_animated" id="edo-ani3" type="radio"
+                                                       asp-for="ReturnAble" value="@true">
+                                                باشد
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated m-t-10">
+                                            <label class="d-block" for="edo-ani3">
+                                                <input class="radio_animated" id="edo-ani3" type="radio"
+                                                       asp-for="ReturnAble" value="@false">
+                                                نباشد
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-top:40px;margin-bottom:40px" class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>شگفت انگیز</label>
+                                    <div class="form-group">
+                                        <div class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated m-t-10">
+                                            <label class="d-block" for="edo-ani3">
+                                                <input class="radio_animated" id="edo-ani3" type="radio"
+                                                       asp-for="IsAmazing" value="@true">
+                                                باشد
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated m-t-10">
+                                            <label class="d-block" for="edo-ani3">
+                                                <input class="radio_animated" id="edo-ani3" type="radio"
+                                                       asp-for="IsAmazing" value="@false">
+                                                نباشد
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <div class="product-buttons text-center">
+                                        <a href="/Admin/ProductList" class="btn btn-light">بازگشت</a>
+                                        <button type="submit" class="btn btn-primary">ذخیره</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+
+</div>
+
+@section Scripts{
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#Product').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#getFile").change(function() {
+            readURL(this);
+        });
+
+        CKEDITOR.replace('Description', {
+            customConfig: '/Admin/js/Config.js'
+        });
+    </script>
+}

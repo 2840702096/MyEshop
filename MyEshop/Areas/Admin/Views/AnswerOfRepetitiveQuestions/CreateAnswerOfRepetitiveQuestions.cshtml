@@ -1,0 +1,113 @@
+﻿@model MyEshop.Core.DTOs.AnswerOfRepetitiveQuestionsViewModel
+
+@{
+    ViewData["Title"] = "پاسخ پرسش های پر تکرار";
+}
+
+<div class="page-body">
+
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            افزودن
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="/Admin/Home"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">پاسخ پرسش های پر تکرار</li>
+                        <li class="breadcrumb-item active">
+                            افزودن
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row product-adding">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>اطلاعات</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="digital-add needs-validation">
+                            <form asp-action="CreateAnswerOfRepetitiveQuestions" method="post">
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0">
+                                        <span>*</span>گروه
+                                    </label>
+                                    <select asp-for="CategoryId" id="Group"
+                                            class="form-control" asp-items="@ViewBag.Categorie">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>سوال</label>
+                                    <input asp-for="QuestionText" class="form-control" type="text">
+                                    <span class="text-danger" asp-validation-for="QuestionText"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>پرتکرار</label>
+                                    <div class="form-group">
+                                        <div class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated m-t-10">
+                                            <label class="d-block" for="edo-ani3">
+                                                <input class="radio_animated" id="edo-ani3" type="radio"
+                                                       asp-for="IsRepetitive" value="@true">
+                                                هست
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated m-t-10">
+                                            <label class="d-block" for="edo-ani3">
+                                                <input class="radio_animated" id="edo-ani3" type="radio"
+                                                       asp-for="IsRepetitive" value="@false">
+                                                نیست
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>جواب</label>
+                                </div>
+                                <div class="form-group row">
+                                    <textarea asp-for="AnswerBody" class="form-control" type="text"></textarea>
+                                    <span asp-validation-for="AnswerBody"></span>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <div class="product-buttons text-center">
+                                        <a href="/Admin/AnswerOfRepetitiveQuestions" class="btn btn-light">بازگشت</a>
+                                        <button type="submit" class="btn btn-primary">ذخیره</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+
+</div>
+
+@section Scripts
+    {
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+    <script src="/Admin/js/jquery.min.js"></script>
+    <script>
+
+        CKEDITOR.replace('AnswerBody', {
+            customConfig: '/Admin/js/Config.js'
+        });
+
+    </script>
+}

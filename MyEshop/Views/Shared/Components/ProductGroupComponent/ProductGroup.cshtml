@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ProductCategories>
+@inject IClientServices ClientServices
+
+<li class="list-item category-list">
+    <a href="#"><i class="fal fa-bars ml-1"></i>دسته بندی کالاها</a>
+    <ul>
+        @foreach (var Group in Model.Where(m => m.ParentId == null && m.SubParentId == null))
+        {
+            <li>
+                <a href="/Home/ChangingViewAcordingToCategory/@Group.CategoryId">@Group.CategoryTitle</a>
+                @if (Model.Any(p => p.ParentId == Group.CategoryId && p.SubParentId == null))
+                {
+                    <ul class="row">
+                        @foreach (var Sub in Group.Categories.Where(g => g.ParentId != null && g.SubParentId == null))
+                        {
+                            <li class="sublist--title"><a href="#">@Sub.CategoryTitle</a></li>
+                            @foreach (var ThirdSub in Model.Where(p => p.SubParentId == Sub.CategoryId))
+                            {
+                                <li class="sublist--item"><a href="#">@ThirdSub.CategoryTitle</a></li>
+                            }
+                        }
+                    </ul>
+                }
+            </li>
+        }
+    </ul>
+</li>

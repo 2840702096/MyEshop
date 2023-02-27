@@ -1,0 +1,992 @@
+﻿<!-- Container-fluid starts-->
+            <div class="container-fluid">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="page-header-left">
+                                <h3>داشبورد
+                                    <small>پنل مدیریت چندکاره</small>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <ol class="breadcrumb pull-right">
+                                <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                                <li class="breadcrumb-item active">داشبورد</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Container-fluid Ends-->
+
+            <!-- Container-fluid starts-->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden widget-cards">
+                            <div class="bg-warning card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="navigation" class="font-warning"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">درآمد</span>
+                                        <h3 class="mb-0">تومان<span class="counter">6,659</span><small> این ماه</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden  widget-cards">
+                            <div class="bg-secondary card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="box" class="font-secondary"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">محصولات</span>
+                                        <h3 class="mb-0">تومان<span class="counter">9,856</span><small> این ماه</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden widget-cards">
+                            <div class="bg-primary card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="message-square" class="font-primary"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">پیام ها
+</span>
+                                        <h3 class="mb-0">تومان<span class="counter">893</span><small> این ماه</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden widget-cards">
+                            <div class="bg-danger card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="users" class="font-danger"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">فروشندگان جدید</span>
+                                        <h3 class="mb-0">تومان <span class="counter">45,631</span><small> این ماه</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   @* <div class="col-xl-6 xl-100">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>ارزش بازار</h5>
+                                <div class="card-header-right">
+                                    <ul class="list-unstyled card-option">
+                                        <li><i class="icofont icofont-simple-left"></i></li>
+                                        <li><i class="view-html fa fa-code"></i></li>
+                                        <li><i class="icofont icofont-maximize full-card"></i></li>
+                                        <li><i class="icofont icofont-minus minimize-card"></i></li>
+                                        <li><i class="icofont icofont-refresh reload-card"></i></li>
+                                        <li><i class="icofont icofont-error close-card"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="market-chart"></div>
+                                <div class="code-box-copy">
+                                    <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head" title="Copy"><i class="icofont icofont-copy-alt"></i></button>
+                                    <pre><code class="language-html" id="example-head">
+&lt;div class="market-chart"&gt;&lt;/div&gt;
+</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                <div class="col-xl-6 xl-100">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>آخرین سفارشات
+                            </h5>
+                            <div class="card-header-right">
+                                <ul class="list-unstyled card-option">
+                                    <li><i class="icofont icofont-simple-left"></i></li>
+                                    <li><i class="view-html fa fa-code"></i></li>
+                                    <li><i class="icofont icofont-maximize full-card"></i></li>
+                                    <li><i class="icofont icofont-minus minimize-card"></i></li>
+                                    <li><i class="icofont icofont-refresh reload-card"></i></li>
+                                    <li><i class="icofont icofont-error close-card"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="user-status table-responsive latest-order-table">
+                                <table class="table table-bordernone">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">شماره سفارش</th>
+                                        <th scope="col">قیمت</th>
+                                        <th scope="col">روش پرداخت	</th>
+                                        <th scope="col">وضعیت</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td class="digits">120,000 تومان</td>
+                                        <td class="font-danger">نقل و انتقالات بانکی	</td>
+                                        <td class="digits">درحال بررسی</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td class="digits">90,000 تومان</td>
+                                        <td class="font-secondary">کیف پول</td>
+                                        <td class="digits">تحویل داده شده
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td class="digits">240,000 تومان</td>
+                                        <td class="font-warning">پول نقد	</td>
+                                        <td class="digits">تحویل داده شده
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td class="digits">120,000 تومان</td>
+                                        <td class="font-primary">پرداخت مستقیم	</td>
+                                        <td class="digits">درحال بررسی</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td class="digits">50,000 تومان</td>
+                                        <td class="font-primary">نقل و انتقالات بانکی	</td>
+                                        <td class="digits">تحویل داده شده
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <a href="order.html" class="btn btn-primary">مشاهده همه سفارشات</a>
+                            </div>
+                            <div class="code-box-copy">
+                                <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head1" title="" data-original-title="Copy"><i class="icofont icofont-copy-alt"></i></button>
+                                <pre class=" language-html"><code class=" language-html" id="example-head1">
+&lt;div class="user-status table-responsive latest-order-table"&gt;
+    &lt;table class="table table-bordernone"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th scope="col"&gt;شماره سفارش&lt;/th&gt;
+                &lt;th scope="col"&gt;قیمت&lt;/th&gt;
+                &lt;th scope="col"&gt;روش پرداخت&lt;/th&gt;
+                &lt;th scope="col"&gt;وضعیت&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;1&lt;/td&gt;
+                &lt;td class="digits"&gt;120,000 تومان&lt;/td&gt;
+                &lt;td class="font-secondary"&gt;نقل و انتقالات بانکی&lt;/td&gt;
+                &lt;td class="digits"&gt;تحویل داده شده&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;2&lt;/td&gt;
+                &lt;td class="digits"&gt;90,000 تومان&lt;/td&gt;
+                &lt;td class="font-secondary"&gt;کیف پول&lt;/td&gt;
+                &lt;td class="digits"&gt;تحویل داده شده&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;3&lt;/td&gt;
+                &lt;td class="digits"&gt;240,000 تومان&lt;/td&gt;
+                &lt;td class="font-secondary"&gt;پول نقد&lt;/td&gt;
+                &lt;td class="digits"&gt;تحویل داده شده&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;4&lt;/td&gt;
+                &lt;td class="digits"&gt;120,000 تومان&lt;/td&gt;
+                &lt;td class="font-primary"&gt;پرداخت مستقیم&lt;/td&gt;
+                &lt;td class="digits"&gt;تحویل داده شده&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;5&lt;/td&gt;
+                &lt;td class="digits"&gt;50,000 تومان&lt;/td&gt;
+                &lt;td class="font-primary"&gt;نقل و انتقالات بانکی&lt;/td&gt;
+                &lt;td class="digits"&gt;تحویل داده شده&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+                                    </code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                     <div class="col-xl-6 xl-100">
+                        <div class="card height-equal">
+                            <div class="card-header">
+                                <h5>بازگشت کالا
+</h5>
+                                <div class="card-header-right">
+                                    <ul class="list-unstyled card-option">
+                                        <li><i class="icofont icofont-simple-left"></i></li>
+                                        <li><i class="view-html fa fa-code"></i></li>
+                                        <li><i class="icofont icofont-maximize full-card"></i></li>
+                                        <li><i class="icofont icofont-minus minimize-card"></i></li>
+                                        <li><i class="icofont icofont-refresh reload-card"></i></li>
+                                        <li><i class="icofont icofont-error close-card"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="user-status table-responsive products-table">
+                                    <table class="table table-bordernone mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">جزئیات</th>
+                                            <th scope="col">تعداد</th>
+                                            <th scope="col">وضعیت</th>
+                                            <th scope="col">قیمت</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>لورم ایپسوم متن</td>
+                                            <td class="digits">1</td>
+                                            <td class="font-primary">در انتظار	</td>
+                                            <td class="digits">65,300 تومان</td>
+                                        </tr>
+                                        <tr>
+                                            <td>لورم ایپسوم متن</td>
+                                            <td class="digits">5</td>
+                                            <td class="font-secondary">لغو</td>
+                                            <td class="digits">165,300 تومان</td>
+                                        </tr>
+                                        <tr>
+                                            <td>لورم ایپسوم متن</td>
+                                            <td class="digits">10</td>
+                                            <td class="font-secondary">لغو</td>
+                                            <td class="digits">605,300 تومان</td>
+                                        </tr>
+                                        <tr>
+                                            <td>لورم ایپسوم متن</td>
+                                            <td class="digits">9</td>
+                                            <td class="font-primary">برگشت</td>
+                                            <td class="digits">68,300 تومان</td>
+                                        </tr>
+                                        <tr>
+                                            <td>لورم ایپسوم متن</td>
+                                            <td class="digits">8</td>
+                                            <td class="font-primary">در انتظار	</td>
+                                            <td class="digits">75,300 تومان</td>
+                                        </tr>
+                                        <tr>
+                                            <td>لورم ایپسوم متن</td>
+                                            <td class="digits">3</td>
+                                            <td class="font-secondary">لغو</td>
+                                            <td class="digits">650,300 تومان</td>
+                                        </tr>
+                                        <tr>
+                                            <td>لورم ایپسوم متن</td>
+                                            <td class="digits">8</td>
+                                            <td class="font-primary">برگشت</td>
+                                            <td class="digits">65,300 تومان</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="code-box-copy">
+                                    <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head4" title="" data-original-title="Copy"><i class="icofont icofont-copy-alt"></i></button>
+                                    <pre class=" language-html"><code class=" language-html" id="example-head4">
+&lt;div class="user-status table-responsive products-table"&gt;
+    &lt;table class="table table-bordernone mb-0"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th scope="col"&gt;جزئیات&lt;/th&gt;
+                &lt;th scope="col"&gt;تعداد&lt;/th&gt;
+                &lt;th scope="col"&gt;وضعیت&lt;/th&gt;
+                &lt;th scope="col"&gt;قیمت&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;لورم ایپسوم متن&lt;/td&gt;
+                &lt;td class="digits"&gt;1&lt;/td&gt;
+                &lt;td class="font-primary"&gt;Pending&lt;/td&gt;
+                &lt;td class="digits"&gt;65,300 تومان&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;لورم ایپسوم متن&lt;/td&gt;
+                &lt;td class="digits"&gt;5&lt;/td&gt;
+                &lt;td class="font-secondary"&gt;Cancle&lt;/td&gt;
+                &lt;td class="digits"&gt;650,300 تومان&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;لورم ایپسوم متن&lt;/td&gt;
+                &lt;td class="digits"&gt;10&lt;/td&gt;
+                &lt;td class="font-secondary"&gt;Cancle&lt;/td&gt;
+                &lt;td class="digits"&gt;605,300 تومان&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;لورم ایپسوم متن&lt;/td&gt;
+                &lt;td class="digits"&gt;9&lt;/td&gt;
+                &lt;td class="font-primary"&gt;برگشت&lt;/td&gt;
+                &lt;td class="digits"&gt;69,300 تومان&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;لورم ایپسوم متن&lt;/td&gt;
+                &lt;td class="digits"&gt;8&lt;/td&gt;
+                &lt;td class="font-primary"&gt;Pending&lt;/td&gt;
+                &lt;td class="digits"&gt;65,500 تومان&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;لورم ایپسوم متن&lt;/td&gt;
+                &lt;td class="digits"&gt;3&lt;/td&gt;
+                &lt;td class="font-secondary"&gt;Cancle&lt;/td&gt;
+                &lt;td class="digits"&gt;655,300 تومان&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;لورم ایپسوم متن&lt;/td&gt;
+                &lt;td class="digits"&gt;8&lt;/td&gt;
+                &lt;td class="font-primary"&gt;برگشت&lt;/td&gt;
+                &lt;td class="digits"&gt;65,300 تومان&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+                                    </code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   @* <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card order-graph sales-carousel">
+                            <div class="card-header">
+                                <h6>فروش کل
+</h6>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="small-chartjs">
+                                            <div class="flot-chart-placeholder" id="simple-line-chart-sparkline-3"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="value-graph">
+                                            <h3>42% <span><i class="fa fa-angle-up font-primary"></i></span></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <span>فروش ماه گذشته</span>
+                                        <h2 class="mb-0">9054</h2>
+                                        <p>0.25% <span><i class="fa fa-angle-up"></i></span></p>
+                                        <h5 class="f-w-600">فروش ناخالص شهریور</h5>
+                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                    </div>
+                                    <div class="bg-primary b-r-8">
+                                        <div class="small-box">
+                                            <i data-feather="briefcase"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card order-graph sales-carousel">
+                            <div class="card-header">
+                                <h6>کل خرید</h6>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="small-chartjs">
+                                            <div class="flot-chart-placeholder" id="simple-line-chart-sparkline"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="value-graph">
+                                            <h3>20% <span><i class="fa fa-angle-up font-secondary"></i></span></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <span>خرید این ماه</span>
+                                        <h2 class="mb-0">2154</h2>
+                                        <p>0.13% <span><i class="fa fa-angle-up"></i></span></p>
+                                        <h5 class="f-w-600">خرید ناخالص</h5>
+                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                    </div>
+                                    <div class="bg-secondary b-r-8">
+                                        <div class="small-box">
+                                            <i data-feather="credit-card"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card order-graph sales-carousel">
+                            <div class="card-header">
+                                <h6>کل معامله نقدی
+</h6>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="small-chartjs">
+                                            <div class="flot-chart-placeholder" id="simple-line-chart-sparkline-2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="value-graph">
+                                            <h3>28% <span><i class="fa fa-angle-up font-warning"></i></span></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <span>پول دستی</span>
+                                        <h2 class="mb-0">4672</h2>
+                                        <p>0.8% <span><i class="fa fa-angle-up"></i></span></p>
+                                        <h5 class="f-w-600">جزئیات مربوط به پول نقد
+</h5>
+                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                    </div>
+                                    <div class="bg-warning b-r-8">
+                                        <div class="small-box">
+                                            <i data-feather="shopping-cart"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card order-graph sales-carousel">
+                            <div class="card-header">
+                                <h6>سپرده های روزانه
+</h6>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="small-chartjs">
+                                            <div class="flot-chart-placeholder" id="simple-line-chart-sparkline-1"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="value-graph">
+                                            <h3>75% <span><i class="fa fa-angle-up font-danger"></i></span></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <span>سپرده های امنیتی
+</span>
+                                        <h2 class="mb-0">0782</h2>
+                                        <p>0.25% <span><i class="fa fa-angle-up"></i></span></p>
+                                        <h5 class="f-w-600">فروش ناخالص شهریور</h5>
+                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
+                                    </div>
+                                    <div class="bg-danger b-r-8">
+                                        <div class="small-box">
+                                            <i data-feather="calendar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>خرید/ فروش
+</h5>
+                                <div class="card-header-right">
+                                    <ul class="list-unstyled card-option">
+                                        <li><i class="icofont icofont-simple-left"></i></li>
+                                        <li><i class="view-html fa fa-code"></i></li>
+                                        <li><i class="icofont icofont-maximize full-card"></i></li>
+                                        <li><i class="icofont icofont-minus minimize-card"></i></li>
+                                        <li><i class="icofont icofont-refresh reload-card"></i></li>
+                                        <li><i class="icofont icofont-error close-card"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body sell-graph">
+                                <canvas id="myGraph"></canvas>
+                                <div class="code-box-copy">
+                                    <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head3" title="" data-original-title="Copy"><i class="icofont icofont-copy-alt"></i></button>
+                                    <pre class=" language-html"><code class=" language-html" id="example-head3">&lt;div class="card-body sell-graph"&gt;
+   &lt;canvas id="myGraph"&gt;&lt;/canvas&gt;
+&lt;/div&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               
+                    @*<div class="col-xl-6 xl-100">
+                        <div class="card height-equal">
+                            <div class="card-header">
+                                <h5>وضعیت کارمندان</h5>
+                                <div class="card-header-right">
+                                    <ul class="list-unstyled card-option">
+                                        <li><i class="icofont icofont-simple-left"></i></li>
+                                        <li><i class="view-html fa fa-code"></i></li>
+                                        <li><i class="icofont icofont-maximize full-card"></i></li>
+                                        <li><i class="icofont icofont-minus minimize-card"></i></li>
+                                        <li><i class="icofont icofont-refresh reload-card"></i></li>
+                                        <li><i class="icofont icofont-error close-card"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="user-status table-responsive products-table">
+                                    <table class="table table-bordernone mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">نام</th>
+                                            <th scope="col">شغل</th>
+                                            <th scope="col">سطح مهارت	</th>
+                                            <th scope="col">تجربه</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td class="bd-t-none u-s-tb">
+                                                <div class="align-middle image-sm-size"><img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="/Admin/images/dashboard/user2.jpg" alt="" data-original-title="" title="">
+                                                    <div class="d-inline-block">
+                                                        <h6>جان دئو <span class="text-muted digits">(14+ آنلاین)</span></h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>طراح</td>
+                                            <td>
+                                                <div class="progress-showcase">
+                                                    <div class="progress" style="height: 8px;">
+                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 30%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="digits">2 سال</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bd-t-none u-s-tb">
+                                                <div class="align-middle image-sm-size"><img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="/Admin/images/dashboard/user1.jpg" alt="" data-original-title="" title="">
+                                                    <div class="d-inline-block">
+                                                        <h6>هالیو ماکو <span class="text-muted digits">(250+ آنلاین)</span></h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>توسعه دهنده	
+</td>
+                                            <td>
+                                                <div class="progress-showcase">
+                                                    <div class="progress" style="height: 8px;">
+                                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="digits">3 سال
+</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bd-t-none u-s-tb">
+                                                <div class="align-middle image-sm-size"><img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="/Admin/images/dashboard/man.png" alt="" data-original-title="" title="">
+                                                    <div class="d-inline-block">
+                                                        <h6>محبی لارا <span class="text-muted digits">(250+ آنلاین)</span></h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>آزمایش کننده	
+</td>
+                                            <td>
+                                                <div class="progress-showcase">
+                                                    <div class="progress" style="height: 8px;">
+                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="digits">5 ماه
+</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bd-t-none u-s-tb">
+                                                <div class="align-middle image-sm-size"><img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="/Admin/images/dashboard/user.png" alt="" data-original-title="" title="">
+                                                    <div class="d-inline-block">
+                                                        <h6>چان <span class="text-muted digits">(150+ آنلاین)</span></h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>طراح</td>
+                                            <td>
+                                                <div class="progress-showcase">
+                                                    <div class="progress" style="height: 8px;">
+                                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 30%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="digits">3 ماه
+</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bd-t-none u-s-tb">
+                                                <div class="align-middle image-sm-size"><img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="/Admin/images/dashboard/designer.jpg" alt="" data-original-title="" title="">
+                                                    <div class="d-inline-block">
+                                                        <h6>محبی  <span class="text-muted digits">(14+ آنلاین)</span></h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>طراح</td>
+                                            <td>
+                                                <div class="progress-showcase">
+                                                    <div class="progress" style="height: 8px;">
+                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="digits">5 سال
+</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="code-box-copy">
+                                    <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head5" title="" data-original-title="Copy"><i class="icofont icofont-copy-alt"></i></button>
+                                    <pre class=" language-html"><code class=" language-html" id="example-head5">
+
+&lt;div class="user-status table-responsive products-table"&gt;
+    &lt;table class="table table-bordernone mb-0"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th scope="col"&gt;نام&lt;/th&gt;
+                &lt;th scope="col"&gt;شغل&lt;/th&gt;
+                &lt;th scope="col"&gt;سطح مهارت&lt;/th&gt;
+                &lt;th scope="col"&gt;تجربه&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+                &lt;tr&gt;
+                    &lt;td class="bd-t-none u-s-tb"&gt;
+                        &lt;div class="align-middle image-sm-size"&gt;&lt;img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="/Admin/images/dashboard/user2.jpg" alt="" data-original-title="" title=""&gt;
+                        &lt;div class="d-inline-block"&gt;
+                        &lt;h6&gt;جان دئو &lt;span class="text-muted digits"&gt;(14+ آنلاین)&lt;/span&gt;&lt;/h6&gt;
+                        &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/td&gt;
+                    &lt;td&gt;طراح&lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;div class="progress-showcase"&gt;
+                        &lt;div class="progress" style="height: 8px;"&gt;
+                        &lt;div class="progress-bar bg-primary" role="progressbar" style="width: 30%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/td&gt;
+                    &lt;td class="digits"&gt;2 سال
+&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="bd-t-none u-s-tb"&gt;
+                    &lt;div class="align-middle image-sm-size"&gt;&lt;img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="/Admin/images/dashboard/user1.jpg" alt="" data-original-title="" title=""&gt;
+                    &lt;div class="d-inline-block"&gt;
+                    &lt;h6&gt;هالیو ماکو &lt;span class="text-muted digits"&gt;(250+ آنلاین)&lt;/span&gt;&lt;/h6&gt;
+                    &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+                &lt;td&gt;توسعه دهنده	
+&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;div class="progress-showcase"&gt;
+                    &lt;div class="progress" style="height: 8px;"&gt;
+                    &lt;div class="progress-bar bg-secondary" role="progressbar" style="width: 70%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+                &lt;td class="digits"&gt;3 سال
+&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="bd-t-none u-s-tb"&gt;
+                    &lt;div class="align-middle image-sm-size"&gt;&lt;img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="/Admin/images/dashboard/man.png" alt="" data-original-title="" title=""&gt;
+                    &lt;div class="d-inline-block"&gt;
+                    &lt;h6&gt;محبی لارا&lt;span class="text-muted digits"&gt;(99+ آنلاین)&lt;/span&gt;&lt;/h6&gt;
+                    &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+                &lt;td&gt;آزمایش کننده	
+&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;div class="progress-showcase"&gt;
+                    &lt;div class="progress" style="height: 8px;"&gt;
+                    &lt;div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+                &lt;td class="digits"&gt;5 ماه&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="bd-t-none u-s-tb"&gt;
+                    &lt;div class="align-middle image-sm-size"&gt;&lt;img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="/Admin/images/dashboard/user.png" alt="" data-original-title="" title=""&gt;
+                    &lt;div class="d-inline-block"&gt;
+                    &lt;h6&gt;جان &lt;span class="text-muted digits"&gt;(150+ آنلاین)&lt;/span&gt;&lt;/h6&gt;
+                    &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+                &lt;td&gt;طراح&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;div class="progress-showcase"&gt;
+                    &lt;div class="progress" style="height: 8px;"&gt;
+                    &lt;div class="progress-bar bg-secondary" role="progressbar" style="width: 30%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+                &lt;td class="digits"&gt;3 ماه
+&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="bd-t-none u-s-tb"&gt;
+                    &lt;div class="align-middle image-sm-size"&gt;&lt;img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="/Admin/images/dashboard/designer.jpg" alt="" data-original-title="" title=""&gt;
+                    &lt;div class="d-inline-block"&gt;
+                    &lt;h6&gt;محبی&lt;span class="text-muted digits"&gt;(14+ آنلاین)&lt;/span&gt;&lt;/h6&gt;
+                    &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+                &lt;td&gt;طراح&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;div class="progress-showcase"&gt;
+                    &lt;div class="progress" style="height: 8px;"&gt;
+                    &lt;div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+                &lt;td class="digits"&gt;5 سال&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+                                    </code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>وضعیت فروش
+</h5>
+                                <div class="card-header-right">
+                                    <ul class="list-unstyled card-option">
+                                        <li><i class="icofont icofont-simple-left"></i></li>
+                                        <li><i class="view-html fa fa-code"></i></li>
+                                        <li><i class="icofont icofont-maximize full-card"></i></li>
+                                        <li><i class="icofont icofont-minus minimize-card"></i></li>
+                                        <li><i class="icofont icofont-refresh reload-card"></i></li>
+                                        <li><i class="icofont icofont-error close-card"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-xl-3 col-sm-6 xl-50">
+                                        <div class="order-graph">
+                                            <h6>سفارشات بر اساس موقعیت مکانی
+</h6>
+                                            <div class="chart-block chart-vertical-center">
+                                                <canvas id="myDoughnutGraph"></canvas>
+                                            </div>
+                                            <div class="order-graph-bottom">
+                                                <div class="media">
+                                                    <div class="order-color-primary"></div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-0">سنت لوسیا <span class="pull-right">157,000 تومان</span></h6>
+                                                    </div>
+                                                </div>
+                                                <div class="media">
+                                                    <div class="order-color-secondary"></div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-0">کنیا <span class="pull-right">107,000 تومان</span></h6>
+                                                    </div>
+                                                </div>
+                                                <div class="media">
+                                                    <div class="order-color-danger"></div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-0">لیبریا<span class="pull-right">257,000 تومان</span></h6>
+                                                    </div>
+                                                </div>
+                                                <div class="media">
+                                                    <div class="order-color-warning"></div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-0">جزیره کریسمس<span class="pull-right">100,000 تومان</span></h6>
+                                                    </div>
+                                                </div>
+                                                <div class="media">
+                                                    <div class="order-color-success"></div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-0">سنت هلنا <span class="pull-right">357,000 تومان</span></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-sm-6 xl-50">
+                                        <div class="order-graph sm-order-space">
+                                            <h6>فروش براساس موقعیت مکانی
+</h6>
+                                            <div class="peity-chart-dashboard text-center">
+                                                <span class="pie-colours-1">4,7,6,5</span>
+                                            </div>
+                                            <div class="order-graph-bottom sales-location">
+                                                <div class="media">
+                                                    <div class="order-shape-primary"></div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-0 mr-0">آلمان <span class="pull-right">25%</span></h6>
+                                                    </div>
+                                                </div>
+                                                <div class="media">
+                                                    <div class="order-shape-secondary"></div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-0 mr-0">برزیل <span class="pull-right">10%</span></h6>
+                                                    </div>
+                                                </div>
+                                                <div class="media">
+                                                    <div class="order-shape-danger"></div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-0 mr-0">انگلستان<span class="pull-right">34%</span></h6>
+                                                    </div>
+                                                </div>
+                                                <div class="media">
+                                                    <div class="order-shape-warning"></div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-0 mr-0">استرالیا<span class="pull-right">5%</span></h6>
+                                                    </div>
+                                                </div>
+                                                <div class="media">
+                                                    <div class="order-shape-success"></div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-0 mr-0">کانادا <span class="pull-right">25%</span></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 xl-100">
+                                        <div class="order-graph xl-space">
+                                            <h6>درآمد ماه گذشته
+</h6>
+                                            <div class="ct-4 flot-chart-container"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="code-box-copy">
+                                    <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head2" title="" data-original-title="Copy"><i class="icofont icofont-copy-alt"></i></button>
+                                    <pre class=" language-html"><code class=" language-html" id="example-head2">&lt;div class="row"&gt;
+   &lt;div class="col-xl-3 col-sm-6 xl-50"&gt;
+      &lt;div class="order-graph"&gt;
+         &lt;h6&gt;سفارشات بر اساس موقعیت مکانی
+&lt;/h6&gt;
+         &lt;div class="chart-block chart-vertical-center"&gt;
+            &lt;canvas id="myDoughnutGraph"&gt;&lt;/canvas&gt;
+         &lt;/div&gt;
+         &lt;div class="order-graph-bottom"&gt;
+            &lt;div class="media"&gt;
+               &lt;div class="order-color-primary"&gt;&lt;/div&gt;
+               &lt;div class="media-body"&gt;
+                  &lt;h6 class="mb-0"&gt;سنت لوسیا &lt;span class="pull-right"&gt;157,000 تومان
+&lt;/span&gt;&lt;/h6&gt;
+               &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="media"&gt;
+               &lt;div class="order-color-secondary"&gt;&lt;/div&gt;
+               &lt;div class="media-body"&gt;
+                  &lt;h6 class="mb-0"&gt;کنیا &lt;span class="pull-right"&gt;107,000 تومان
+&lt;/span&gt;&lt;/h6&gt;
+               &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="media"&gt;
+               &lt;div class="order-color-danger"&gt;&lt;/div&gt;
+               &lt;div class="media-body"&gt;
+                  &lt;h6 class="mb-0"&gt;لیبریا&lt;span class="pull-right"&gt;257,000 تومان&lt;/span&gt;&lt;/h6&gt;
+               &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="media"&gt;
+               &lt;div class="order-color-warning"&gt;&lt;/div&gt;
+               &lt;div class="media-body"&gt;
+                  &lt;h6 class="mb-0"&gt;جزیره کریسمس&lt;span class="pull-right"&gt;100,000 تومان
+&lt;/span&gt;&lt;/h6&gt;
+               &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="media"&gt;
+               &lt;div class="order-color-success"&gt;&lt;/div&gt;
+               &lt;div class="media-body"&gt;
+                  &lt;h6 class="mb-0"&gt;سنت هلنا &lt;span class="pull-right"&gt;357,000 تومان
+&lt;/span&gt;&lt;/h6&gt;
+               &lt;/div&gt;
+            &lt;/div&gt;
+         &lt;/div&gt;
+      &lt;/div&gt;
+   &lt;/div&gt;
+   &lt;div class="col-xl-3 col-sm-6 xl-50"&gt;
+      &lt;div class="order-graph sm-order-space"&gt;
+         &lt;h6&gt;فروش براساس موقعیت مکانی
+&lt;/h6&gt;
+         &lt;div class="peity-chart-dashboard text-center"&gt;
+            &lt;span class="pie-colours-1"&gt;4,7,6,5&lt;/span&gt;
+         &lt;/div&gt;
+         &lt;div class="order-graph-bottom sales-location"&gt;
+            &lt;div class="media"&gt;
+               &lt;div class="order-shape-primary"&gt;&lt;/div&gt;
+                  &lt;div class="media-body"&gt;
+                     &lt;h6 class="mb-0 mr-0"&gt;آلمان &lt;span class="pull-right"&gt;25%&lt;/span&gt;&lt;/h6&gt;
+                  &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="media"&gt;
+               &lt;div class="order-shape-secondary"&gt;&lt;/div&gt;
+               &lt;div class="media-body"&gt;
+                  &lt;h6 class="mb-0 mr-0"&gt;برزیل &lt;span class="pull-right"&gt;10%&lt;/span&gt;&lt;/h6&gt;
+               &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="media"&gt;
+               &lt;div class="order-shape-danger"&gt;&lt;/div&gt;
+                  &lt;div class="media-body"&gt;
+                     &lt;h6 class="mb-0 mr-0"&gt;انگلستان&lt;span class="pull-right"&gt;34%&lt;/span&gt;&lt;/h6&gt;
+                  &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="media"&gt;
+               &lt;div class="order-shape-warning"&gt;&lt;/div&gt;
+               &lt;div class="media-body"&gt;
+                  &lt;h6 class="mb-0 mr-0"&gt;استرالیا&lt;span class="pull-right"&gt;5%&lt;/span&gt;&lt;/h6&gt;
+               &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="media"&gt;
+               &lt;div class="order-shape-success"&gt;&lt;/div&gt;
+               &lt;div class="media-body"&gt;
+                  &lt;h6 class="mb-0 mr-0"&gt;کانادا &lt;span class="pull-right"&gt;25%&lt;/span&gt;&lt;/h6&gt;
+               &lt;/div&gt;
+            &lt;/div&gt;
+         &lt;/div&gt;
+      &lt;/div&gt;
+   &lt;/div&gt;
+   &lt;div class="col-xl-6 xl-100"&gt;
+      &lt;div class="order-graph xl-space"&gt;
+         &lt;h6&gt;درآمد ماه گذشته
+&lt;/h6&gt;
+         &lt;div class="ct-4 flot-chart-container"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+   &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Container-fluid Ends-->

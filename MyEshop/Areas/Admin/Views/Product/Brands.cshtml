@@ -1,0 +1,120 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using MyEshop.Core.Convertors
+@using System.IO;
+@model IEnumerable<ProductBrands>
+
+@{
+    ViewData["Title"] = "لیست برند ها برند";
+}
+
+<div class="page-body">
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            لیست برند ها
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></a></li>
+                        <li class="breadcrumb-item">محصولات</li>
+                        <li class="breadcrumb-item active">
+                            لیست برند ها
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h5>
+                    اطلاعات برند
+                </h5>
+            </div>
+            <div>
+                <form asp-action="SearchBrands" class="mt-3" style="text-align:right">
+                    <div class="col-sm-3 col-md-3 d-inline-block">
+                        <input type="text" value="@ViewBag.SearchText" name="brandTitle" class="form-control" placeholder="عنوان برند" />
+                    </div>
+                    <div class="col-sm-3 col-md-3 d-inline-block">
+                        <button style="margin-top:10px" type="submit" class="btn btn-outline btn-info">بگرد</button>
+                        <a style="margin-top:10px" href="/Admin/Brands" class="btn btn-outline btn-danger btn-sm">لغو</a>
+                    </div>
+                    <div class="col-sm-2 col-md-2 d-inline-block">
+                        <a style="margin-top:10px" href="/Admin/CreateBrand" class="btn btn-secondary">ایجاد برند</a>
+                    </div>
+                </form>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                        <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" aria-describedby="dataTables-example_info">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center" style="vertical-align:middle">عکس</th>
+                                                    <th class="text-center" style="vertical-align:middle">عنوان</th>
+                                                    <th class="text-center" style="vertical-align:middle">ویرایش</th>
+                                                    <th class="text-center" style="vertical-align:middle">حذف</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                @foreach (var Brand in Model)
+                                                {
+                                                    <tr>
+                                                        <td class="text-center" style="vertical-align: middle;">
+                                                            <img src="/Admin/images/BrandThumbnails/@Brand.ImageName" class="img-thumbnail" />
+                                                        </td>
+                                                        <td class="text-center" style="vertical-align: middle;">@Brand.Title</td>
+                                                        <td class="text-center" style="vertical-align: middle;">
+                                                            <a href="/Admin/EditBrand/@Brand.BrandId" style="display:flex; flex-direction:column; font-size:25px; color:cadetblue">
+                                                                <i class="fa fa-edit"></i>
+                                                            </a>
+                                                        </td>
+                                                        <td class="text-center" style="vertical-align: middle;">
+                                                            <a href="/Admin/DeleteBrand/@Brand.BrandId" style="display:flex; flex-direction:column; font-size:25px; color:red">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination d-inline-block">
+                                            @for (int i = 1; i <= ViewBag.PageCount; i++)
+                                            {
+                                                <li class="page-item @((ViewBag.PageId==i)?"active":"")"><a class="page-link" href="/Admin/Brands?pageId=@i">@i</a></li>
+                                            }
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+</div>

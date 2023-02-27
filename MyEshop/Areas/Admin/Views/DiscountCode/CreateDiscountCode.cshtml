@@ -1,0 +1,118 @@
+﻿@model MyEshop.Core.DTOs.DiscountCodesViewModel
+
+@{
+    ViewData["Title"] = "افزودن کد تخفیف";
+    bool Category = ViewBag.Category;
+}
+
+<div class="page-body">
+
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            افزودن کد تخفیف
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="/Admin/Home"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">تخفیف</li>
+                        <li class="breadcrumb-item active">
+                            افزودن کردن تخفیف
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row product-adding">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>اطلاعات کد تخفیف</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="digital-add needs-validation">
+                            <form asp-action="CreateDiscountCode" method="post">
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>کد تخفیف</label>
+                                    <input asp-for="Code" class="form-control" type="text">
+                                    <span class="text-danger" asp-validation-for="Code"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>درصد تخفیف(%)</label>
+                                    <input asp-for="Percent" class="form-control" type="number">
+                                    <span class="text-danger" asp-validation-for="Percent"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0">تعداد</label>
+                                    <input asp-for="UsableCount" class="form-control" type="number">
+                                    <p class="help-block">
+                                        در صورت وارد نکردن تعداد کد تخفیف، کد تخفیف به صورت بی نهایت
+                                        ثبت خواهد شد.
+                                    </p>
+                                </div>
+                                @if (Category == true)
+                                {
+                                    <div class="form-group">
+                                        <label class="col-form-label pt-0">
+                                            <span>*</span>گروه
+                                        </label>
+                                        <select asp-for="ProductCategoryId" id="Group"
+                                            class="form-control" asp-items="@ViewBag.Categories">
+                                        </select>
+                                    </div>
+                                }
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0">تاریخ شروع</label>
+                                    <input style="margin-top:10px" id="stDate" name="stDate" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0">تاریخ پایان</label>
+                                    <input style="margin-top:10px" id="edDate" name="edDate" />
+                                </div>
+                                <div class="form-group mb-0">
+                                    <div class="product-buttons text-center">
+                                        @if (Category == false)
+                                        {
+                                            <a href="/Admin/NormalDiscountCodes" class="btn btn-light">بازگشت</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="/Admin/DiscountCodesForProductCategories" class="btn btn-light">بازگشت</a>
+                                        }
+                                        <button type="submit" class="btn btn-primary">ذخیره</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+
+</div>
+
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"
+        integrity="sha256-JklDYODbg0X+8sPiKkcFURb5z7RvlNMIaE3RA2z97vw=" crossorigin="anonymous"></script>
+    <link href="http://cdn.kendostatic.com/2013.2.918/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="http://cdn.kendostatic.com/2013.2.918/styles/kendo.default.min.css" rel="stylesheet" />
+
+    <script src="/AdminContent/js/kendo.all.min.js"></script>
+    <script>
+        // create DatePicker from input HTML element
+        $("#stDate").kendoDatePicker();
+        $("#edDate").kendoDatePicker();
+    </script>
+}

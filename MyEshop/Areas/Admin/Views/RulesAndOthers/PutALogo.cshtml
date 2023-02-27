@@ -1,0 +1,97 @@
+@{
+}
+
+<div class="container-fluid">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="page-header-left">
+                    <h3>لوگو</h3>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <ol class="breadcrumb pull-right">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                 stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">لوگو ها </li>
+                    <li class="breadcrumb-item active">
+                        لوگو
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card col-md-12 mt-5">
+    <div class="card-body">
+        <div class="card-header" style="margin-top: -30px;">
+            <h5>
+                اطلاعات لوگو
+            </h5>
+        </div>
+        <div class="panel panel-danger">
+            <div class="mt-5">
+                <form asp-action="PutALogo" method="post" class="needs-validation user-add"
+                      enctype="multipart/form-data">
+                    <input type="hidden" value="@ViewBag.Image" name="currentImage">
+                    <div class="form-group row">
+                        <div class="col-md-4 d-inline-block mt-5 mr-4">
+                            <div class="add-product">
+                                <div class="row">
+                                    <label style="margin-right:-20px" class="col-xl-3 col-md-4">
+                                        <span>*</span>عکس
+                                        لوگو
+                                    </label>
+                                    <div style="margin-right:105px" class="col-xl-12 xl-50 col-sm-9 col-9">
+                                        <img style="margin-right:243px" id="Product"
+                                             src="/Admin/images/LogoImages/@ViewBag.Image" alt=""
+                                             class="img-fluid image_zoom_1 blur-up lazyloaded">
+                                        <input style="margin-right:243px" type="file"
+                                               class="form-control" name="imageName" id="ProductImage" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pull-right mt-3">
+                        <button type="submit" class="btn btn-primary">ذخیره</button>
+                        <a href="/Admin/Logoes" class="btn btn-light">بازگشت</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#Product').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#ProductImage").change(function() {
+            readURL(this);
+        });
+    </script>
+}

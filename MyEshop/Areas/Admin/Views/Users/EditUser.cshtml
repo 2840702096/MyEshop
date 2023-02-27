@@ -1,0 +1,153 @@
+﻿@model MyEshop.Core.DTOs.EditUserViewModel
+
+@{
+    ViewData["Title"] = "ویرایش کاربر";
+}
+
+<div class="page-body">
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="page-header-left">
+                        <h3>
+                            ویرایش کاربر
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ol class="breadcrumb pull-right">
+                        <li class="breadcrumb-item"><a href="/Admin/Home"><i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">کاربران</li>
+                        <li class="breadcrumb-item active">
+                            ویرایش کاربر
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row product-adding">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>اطلاعات اسلایدر</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="digital-add needs-validation">
+                            <form asp-action="EditUser" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <input type="hidden" value="@Model.CurrentImage" name="currentPhoto" />
+                                    <label class="col-form-label pt-0"><span>*</span>نام کاربر</label>
+                                    <input asp-for="UserName" class="form-control" type="text">
+                                    <span class="text-danger" asp-validation-for="UserName"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>ایمیل</label>
+                                    <input asp-for="Email" class="form-control" type="text">
+                                    <span class="text-danger" asp-validation-for="Email"></span>
+                                    @if(ViewBag.EmailExist!=null)
+                                    {
+                                        <p class="text-danger">کاربری با ایمیل وارد شده، وجود دارد</p>
+                                    }
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>کلمه ی عبور</label>
+                                    <input asp-for="Password" class="form-control" type="text">
+                                    <span class="text-danger" asp-validation-for="Password"></span>
+                                    <p class="help-block">درصورت وارد کردن کلمه ی عبور، کلمه ی عبور ویرایش خواهد شد.</p>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>شماره تلفن</label>
+                                    <input asp-for="PhoneNumber" class="form-control" type="number">
+                                    <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                                    @if(ViewBag.PhoneNumgerExist!=null)
+                                    {
+                                        <p class="text-danger">کاربری با شماره تلفن وارد شده، وجود دارد</p>
+                                    }
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>امتیاز کاربر</label>
+                                    <input asp-for="Score" class="form-control" type="number">
+                                    <span class="text-danger" asp-validation-for="Score"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>تصویر</label>
+                                    <button type="button"
+                                            style="display:block;width:120px; height:30px;border: 1px solid;border-radius: 3px;"
+                                            onclick="document.getElementById('getFile').click()">
+                                        بارگذاری تصویر
+                                    </button>
+                                    <input type="file" class="image" id="getFile" style="display:none"
+                                           asp-for="UserAvatar">
+                                    <span class="text-danger" asp-validation-for="UserAvatar"></span>
+                                </div>
+                                <div >
+                                    <img id="Product" class="imgPreview" src="/Admin/images/UserAvatarImages/@Model.CurrentImage"
+                                         style="border-radius:100% ;width:100px;height:100px;position: relative;left: 50px;bottom: 60px;" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label pt-0"><span>*</span>وضعیت کاربر</label>
+                                    <div class="form-group">
+                                        <div class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated m-t-10">
+                                            <label class="d-block" for="edo-ani3">
+                                                <input class="radio_animated" id="edo-ani3" type="radio"
+                                                       asp-for="IsActive" value="@true">
+                                                فعال
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated m-t-10">
+                                            <label class="d-block" for="edo-ani3">
+                                                <input class="radio_animated" id="edo-ani3" type="radio"
+                                                       asp-for="IsActive" value="@false">
+                                                غیر فعال
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <div class="product-buttons text-center">
+                                        <button type="submit" class="btn btn-primary">ذخیره</button>
+                                        <a href="/Admin/Users" class="btn btn-light">بازگشت</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+
+</div>
+
+@section Scripts
+    {
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#Product').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#getFile").change(function() {
+            readURL(this);
+        });
+    </script>
+}
