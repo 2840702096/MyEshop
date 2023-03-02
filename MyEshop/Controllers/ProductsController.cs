@@ -10,5 +10,16 @@ namespace MyEShop.Controllers
             ViewBag.ProductId = id;
             return View();
         }
+
+        #region Comments
+
+        [Route("/SingleProduct/CommentPage/{id}")]
+        public IActionResult CommentPage(int id)
+        {
+            return View();
+        }
+
+        #endregion
+
     }
 }

@@ -40,8 +40,8 @@ namespace MyEshop.Core.Services.Interfaces
         bool IsThereAnySpecificationValuesInThisTitle(int id);
         IEnumerable<SlideCommentTitles> GetSlideCommentTitles(int id);
         void AddATitleToSlideCommentTitles(string evaluationTitle, int categoryId);
-        //string GetSlideCommentTitle(int id);
-        //void EditSlideCommentTitle(int id, string title);
+        string GetSlideCommentTitle(int id);
+        void EditSlideCommentTitle(int id, string title);
 
         #endregion
 

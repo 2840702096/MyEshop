@@ -349,29 +349,31 @@ namespace MyEShop.Areas.Admin.Controllers
             return Redirect($"/Admin/TitlesOfEvaluationOfProduct/{id}");
         }
 
-        //[Area("Admin")]
-        //[Route("/Admin/EditTitlesOfEvaluationOfProduct/{id}")]
-        //public IActionResult EditTitlesOfEvaluationOfProduct(int id)
-        //{
-        //    ViewBag.Title = _categoryServices.GetSlideCommentTitle(id);
-        //    return View();
-        //}
+        [Area("Admin")]
+        [Route("/Admin/EditTitlesOfEvaluationOfProduct/{id}")]
+        public IActionResult EditTitlesOfEvaluationOfProduct(int id, int categoryId)
+        {
+            ViewBag.CategoryId = categoryId;
+            ViewBag.EvaluationTitle = _categoryServices.GetSlideCommentTitle(id);
+            return View();
+        }
 
-        //[Area("Admin")]
-        //[Route("/Admin/EditTitlesOfEvaluationOfProduct/{id}")]
-        //[HttpPost]
-        //public IActionResult EditTitlesOfEvaluationOfProduct(int id, string title)
-        //{
-        //    if(title == null)
-        //    {
-        //        ViewBag.Error = true;
-        //        return View();
-        //    }
+        [Area("Admin")]
+        [Route("/Admin/EditTitlesOfEvaluationOfProduct/{id}")]
+        [HttpPost]
+        public IActionResult EditTitlesOfEvaluationOfProduct(int id,int categoryId, string title)
+        {
+            if(title == null)
+            {
+                ViewBag.CategoryId = categoryId;
+                ViewBag.Error = true;
+                return View();
+            }
 
-        //    _categoryServices.EditSlideCommentTitle(id, title);
+            _categoryServices.EditSlideCommentTitle(id, title);
 
-        //    return Redirect($"/Admin/TitlesOfEvaluationOfProduct/{id}");
-        //}
+            return Redirect($"/Admin/TitlesOfEvaluationOfProduct/{categoryId}");
+        }
 
         #endregion
 

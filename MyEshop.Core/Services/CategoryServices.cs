@@ -738,19 +738,19 @@ namespace MyEshop.Core.Services
             _context.SaveChanges();
         }
 
-        //public string GetSlideCommentTitle(int id)
-        //{
-        //    return _context.SlideCommentTitles.Find(id).SlideCommentTitle;
-        //}
+        public string GetSlideCommentTitle(int id)
+        {
+            return _context.SlideCommentTitles.Find(id).SlideCommentTitle;
+        }
 
-        //public void EditSlideCommentTitle(int id, string title)
-        //{
-        //    var SlideCommentTitle = _context.SlideCommentTitles.Find(id);
+        public void EditSlideCommentTitle(int id, string title)
+        {
+            var SlideCommentTitle = _context.SlideCommentTitles.Find(id);
 
-        //    SlideCommentTitle.SlideCommentTitle = title;
+            SlideCommentTitle.SlideCommentTitle = title;
 
-        //    _context.SlideCommentTitles.Update(SlideCommentTitle);
-        //    _context.SaveChanges();
-        //}
+            _context.SlideCommentTitles.Update(SlideCommentTitle);
+            _context.SaveChanges();
+        }
     }
 }

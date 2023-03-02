@@ -239,6 +239,7 @@ namespace MyEshop.Core.Services
             NewProduct.IsDelete = false;
             NewProduct.CreateDate = DateTime.Now;
             NewProduct.CountOfVisit = 0;
+            NewProduct.Discription = product.Description;
             if (product.Discount != 0)
             {
                 int DiscountAmount = product.Price.Value * product.Discount.Value / 100;
@@ -289,7 +290,8 @@ namespace MyEshop.Core.Services
                 ProductCategoryId = p.ProductCategoryId,
                 WebsiteCategoryId = p.WebsiteCategoryId,
                 Discount = p.Discount,
-                Price = p.Price
+                Price = p.Price,
+                Description = p.Discription
             }).Single();
         }
 
@@ -315,6 +317,7 @@ namespace MyEshop.Core.Services
             CurrentProduct.ReturnAble = product.ReturnAble;
             CurrentProduct.IsAmazing = product.IsAmazing;
             CurrentProduct.CountOfVisit = 0;
+            CurrentProduct.Discription = product.Description;
             if (product.Discount != 0)
             {
                 int DiscountAmount = product.Price * product.Discount / 100;

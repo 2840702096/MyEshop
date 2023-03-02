@@ -185,6 +185,13 @@ namespace MyEShop.Areas.Admin.Controllers
             return View(_productServices.GetProduct(id));
         }
 
+        [Area("Admin")]
+        [Route("/Admin/CompeleteDescriptionPage/{id}")]
+        public IActionResult CompeleteDescriptionPage(int id)
+        {
+            return View(_productServices.GetProduct(id));
+        }
+
         #endregion
 
         #region ThePageForAddingToBoxes

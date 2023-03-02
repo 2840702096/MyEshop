@@ -19,4 +19,8 @@
     <ProjectReference Include="..\MyEshop.Core\MyEshop.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\MyImages\" />
+  </ItemGroup>
+
 </Project>
