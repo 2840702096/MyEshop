@@ -21,6 +21,7 @@ namespace MyEshop.DataLayer.Entities.Products
 
         [Key]
         public int Id { get; set; }
+        public int CommentId { get; set; }
         public int SCTitleId { get; set; }
         public int ProductId { get; set; }
         public int UserId { get; set; }
@@ -36,6 +37,9 @@ namespace MyEshop.DataLayer.Entities.Products
 
         [ForeignKey("UserId")]
         public Users.Users Users { get; set; }
+
+        [ForeignKey("CommentId")]
+        public Comments_Questions_Answer Comments{ get; set; }
 
         #endregion
     }

@@ -20,6 +20,16 @@ namespace MyEshop.Core.Services.Interfaces
         ColorList GetColorItSelf(int colorId);
         int GetColorPrice(int colorId);
         int GetPriceOfLastAddedColor (int id);
-        
+
+        #region Comments
+
+        int GetCountOfEvaluationTitleRowsInCommentPage(int id);
+        List<SlideCommentTitles> GetSlideCommentTitles(int id, int countOfRowId);
+        void AddSlideComments(List<int> slideCommentTitleId, List<int> slideCommentValue, int productId);
+        void AddCommentAndPNPoints(string commentTitle, string commentBody, int offeringStatus, List<string> positivePoints, List<string> negativePoints, int productId);
+
+
+        #endregion
+
     }
 }

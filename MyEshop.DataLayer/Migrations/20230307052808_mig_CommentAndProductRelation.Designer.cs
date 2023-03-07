@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyEShop.DataLayer.Context;
 
 namespace MyEshop.DataLayer.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    partial class ShopContextModelSnapshot : ModelSnapshot
+    [Migration("20230307052808_mig_CommentAndProductRelation")]
+    partial class mig_CommentAndProductRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -700,9 +702,6 @@ namespace MyEshop.DataLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CommentId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -716,8 +715,6 @@ namespace MyEshop.DataLayer.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CommentId");
 
                     b.HasIndex("ProductId");
 
@@ -1251,12 +1248,6 @@ namespace MyEshop.DataLayer.Migrations
 
             modelBuilder.Entity("MyEshop.DataLayer.Entities.Products.SlideComments", b =>
                 {
-                    b.HasOne("MyEshop.DataLayer.Entities.Products.Comments_Questions_Answer", "Comments")
-                        .WithMany("SlideComments")
-                        .HasForeignKey("CommentId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("MyEshop.DataLayer.Entities.Products.Products", "Products")
                         .WithMany("SlideComments")
                         .HasForeignKey("ProductId")
@@ -1274,8 +1265,6 @@ namespace MyEshop.DataLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("Comments");
 
                     b.Navigation("Products");
 
@@ -1384,8 +1373,6 @@ namespace MyEshop.DataLayer.Migrations
 
             modelBuilder.Entity("MyEshop.DataLayer.Entities.Products.Comments_Questions_Answer", b =>
                 {
-                    b.Navigation("SlideComments");
-
                     b.Navigation("StrengthsOrWeaknesses");
                 });
 

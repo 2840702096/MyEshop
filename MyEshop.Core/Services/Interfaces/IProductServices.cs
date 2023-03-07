@@ -113,6 +113,8 @@ namespace MyEshop.Core.Services.Interfaces
 
         IEnumerable<Comments_Questions_Answer> GetAllHasntConfirmedComments(int pageId);
         int GetCountOfComments();
+        List<StrengthsOrWeaknesses> GetPositivePoints(int commentId);
+        List<StrengthsOrWeaknesses> GetNegativePoints(int commentId);
 
         #endregion
 

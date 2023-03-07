@@ -80,6 +80,8 @@ namespace MyEshop.DataLayer.Entities.Products
 
         public List<StrengthsOrWeaknesses> StrengthsOrWeaknesses { get; set; }
 
+        public List<Comments_Questions_Answer> Comments_Questions_Answers { get; set; }
+
         #endregion
 
     }

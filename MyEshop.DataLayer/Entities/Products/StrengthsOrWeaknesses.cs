@@ -22,7 +22,7 @@ namespace MyEshop.DataLayer.Entities.Products
         public int ProductId { get; set; }
         public string Text { get; set; }
         public bool IsPositiveOrNegative { get; set; }
-        public int SWAndCommentsRelation { get; set; }
+        public int CommentId { get; set; }
         public bool IsConfirmed { get; set; }
         public bool IsRefused { get; set; }
 
@@ -33,6 +33,9 @@ namespace MyEshop.DataLayer.Entities.Products
 
         [ForeignKey("UserId")]
         public Users.Users Users { get; set; }
+
+        [ForeignKey("CommentId")]
+        public Comments_Questions_Answer Comment { get; set; }
 
         #endregion
     }

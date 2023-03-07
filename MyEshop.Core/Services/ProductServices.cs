@@ -763,5 +763,15 @@ namespace MyEshop.Core.Services
             else
                 return false;
         }
+
+        public List<StrengthsOrWeaknesses> GetPositivePoints(int commentId)
+        {
+            return _context.StrengthsOrWeaknesses.Where(s=>s.CommentId == commentId && s.IsPositiveOrNegative == true).ToList();
+        }
+
+        public List<StrengthsOrWeaknesses> GetNegativePoints(int commentId)
+        {
+            return _context.StrengthsOrWeaknesses.Where(s => s.CommentId == commentId && s.IsPositiveOrNegative == false).ToList();
+        }
     }
 }
